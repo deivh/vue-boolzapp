@@ -26,9 +26,25 @@
                         <i class="fas fa-comment-alt"></i>
                         <i class="fas fa-ellipsis-v"></i>
                     </div>
+                   
+                </div>
+                <div class="contacts">
+                    <ul>
+                        <li v-for="name in contacts">
+                            <img src="" alt="profilepic">
+                            <span>{{ name.name }}</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="activeChat">
+                <div class="noActiveChat">
+                    <img src="img/logo.png" alt="whatsapp promo">
+                    <h2>Mantieni il telefono connesso</h2>
+                    <p>BoolzApp si collega al tuo telefono per sincronizzare i messaggi. Per Ridurre l'utilizzo dei dati, collega il telefono al Wi-Fi</p>
+                    <hr>
+                    <p>WhatsApp è disponibile per Windows. <span class="highlighted">Scaricala qui.</span></p>
+                </div>
     
             </div>
         </div>
