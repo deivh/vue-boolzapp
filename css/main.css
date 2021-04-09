@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div.box {
+    width: 60vw;
+    margin: 50px auto;
+    height: 70vh;
+    background-color: aquamarine;
+    display: flex;
+}
+
+div.contactsList {
+    width: 35%;
+    height: 100%;
+    background-color: rgb(245, 241, 237);
+    display: flex;
+    flex-direction: column;
+}
+
+div.activeChat {
+    width: 65%;
+    height: 100%;
+    background-image: url("../img/default.jfif");
+}
