@@ -88,23 +88,16 @@ function initVue() {
                     ],
                 },
             ],
-            'blank' : '',
+            'index' : 0
 
         },
         methods: {
-           getMsg: function(){
-               for (let i=0; i<contacts.length; i++) {
-                   const Contact = contacts[i];
-                   const Name = contact['name'];
-                   const NameMsg = Name['messages'];
-
-               }
-           }
         }
     })}
 
     function init() {
         initVue();
+    
     
     }
     $(init);

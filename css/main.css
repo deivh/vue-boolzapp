@@ -8,7 +8,6 @@ div.box {
     width: 60vw;
     margin: 50px auto;
     height: 70vh;
-    background-color: aquamarine;
     display: flex;
 }
 
@@ -24,6 +23,7 @@ div.activeChat {
     width: 65%;
     height: 100%;
     background-image: url("../img/default.jfif");
+    opacity: 50%;
 }
 div.box div.contacts ul {
     list-style: none;
@@ -45,6 +45,7 @@ div.activeChat div.noActiveChat {
     align-items: center;
     background-color: whitesmoke;
     height: 100%;
+    
 }
 
 
@@ -52,4 +53,39 @@ div.activeChat div.noActiveChat img {
     margin-top: 150px;
     max-width: 150px;
     height: auto;
+}
+
+.hidden {
+    visibility: hidden;
+}
+div.activeChat div.messageBox div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+div.activeChat div.messageBoxFull{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+div.activeChat div.messageBox p {
+    margin: 5px 2px;
+}
+div.activeChat div.messageBox .sent{
+    margin-left: auto;
+    background-color: lightgreen;
+    border-radius: 10px;
+    padding: 5px;
+}
+div.activeChat div.messageBox .received {
+    margin-right: auto;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: 5px;
+}
+div.activeChat input {
+    width: 80%;
+    border-radius: 5px;
+    align-self: center;
 }

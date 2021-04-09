@@ -30,7 +30,7 @@
                 </div>
                 <div class="contacts">
                     <ul>
-                        <li v-for="name in contacts">
+                        <li v-for="name in contacts" >
                             <img src="" alt="profilepic">
                             <span>{{ name.name }}</span>
                         </li>
@@ -38,7 +38,32 @@
                 </div>
             </div>
             <div class="activeChat">
-                <div class="noActiveChat">
+                <div class="messageBoxFull">
+                    <div class="messageBox">
+                        <ul>
+                            <li>
+                                <div v-for="(msg, index) in contacts[index].messages" :key="msg.text" >
+                                    <p v-if="msg.status=='sent'" class="sent">{{ msg.text }}</p>
+                                    <p v-else class="received">{{ msg.text }} </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sendMsg">
+                        <button>
+                            <i class="far fa-smile-beam"></i>
+                        </button>
+                        <button>
+                            <i class="fas fa-paperclip"></i>
+                        </button>
+                        <input type="text">
+                        <button class="send"> 
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="noActiveChat hidden">
                     <img src="img/logo.png" alt="whatsapp promo">
                     <h2>Mantieni il telefono connesso</h2>
                     <p>BoolzApp si collega al tuo telefono per sincronizzare i messaggi. Per Ridurre l'utilizzo dei dati, collega il telefono al Wi-Fi</p>
