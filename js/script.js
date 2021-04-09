@@ -6,7 +6,7 @@ function initVue() {
             [
                 {
                     name: 'Michele',
-                    avatar: '_1',
+                    avatar: 'img/avatar1.jpg',
                     visible: true,
                     messages: [
                         {
@@ -28,7 +28,7 @@ function initVue() {
                 },
                 {
                     name: 'Fabio',
-                    avatar: '_2',
+                    avatar: 'img/avatar2.jpg',
                     visible: true,
                     messages: [
                         {
@@ -50,7 +50,7 @@ function initVue() {
                 },
                 {
                     name: 'Samuele',
-                    avatar: '_3',
+                    avatar: 'img/avatar3.jpg',
                     visible: true,
                     messages: [
                         {
@@ -72,7 +72,7 @@ function initVue() {
                 },
                 {
                     name: 'Luisa',
-                    avatar: '_4',
+                    avatar: 'img/avatar4.jpg',
                     visible: true,
                     messages: [
                         {
