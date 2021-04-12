@@ -20,17 +20,35 @@
         <div class="box">
             <div class="contactsList">
                 <div class="profile">
-                    <img src="img/profile.jfif" alt="immagine profilo">
-                    <div class="icons"> 
-                        <i class="fas fa-circle-notch"></i>
-                        <i class="fas fa-comment-alt"></i>
-                        <i class="fas fa-ellipsis-v"></i>
+                    <div class="myProfile">
+                        <img src="img/profile.jfif" alt="immagine profilo">
+                        <div class="icons"> 
+                            <i class="fas fa-circle-notch"></i>
+                            <i class="fas fa-comment-alt"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    
                     </div>
-                   
+                    <div class="alerts">
+                        <i class="fas fa-bell-slash"></i>
+                        <div>
+                            <h2> Ricevi le notifiche dei nuovi messaggi</h2>
+                            <h3>Disattiva le notifiche</h3>
+                        </div>
+                    </div>
+                    <div class="search">
+                        <label for="search">
+                            <i class="fas fa-search"></i>
+                        </label>
+                        <input type="text" name="search" placeholder="Cerca un contatto qui"></input>
+                    </div>
                 </div>
                 <div class="contacts">
                     <ul>
-                        <li v-for="name in contacts" >
+                        <li v-for="(name, index) in contacts" 
+                        @click="loadMsgClick(index)" 
+                        class="contact"
+                        :class="index == activeIndex ? 'active' : ''">
                             <img :src="name.avatar" alt="profilepic">
                             <span>{{ name.name }}</span>
                         </li>
@@ -40,9 +58,14 @@
             <div class="activeChat">
                 <div class="messageBoxFull">
                     <div class="messageBox">
+                        <div class="header-right-logo">
+                            <img :src="contacts[activeIndex].avatar">
+                            <h3>{{ contacts[activeIndex].name }}</h3>
+                        </div>
                         <ul>
                             <li>
-                                <div v-for="(msg, index) in contacts[index].messages" :key="msg.text" >
+                                <div v-for="msg in contacts[activeIndex].messages" 
+                                :key="msg.text" >
                                     <p v-if="msg.status=='sent'" class="sent">{{ msg.text }}</p>
                                     <p v-else class="received">{{ msg.text }} </p>
                                 </div>
@@ -57,7 +80,7 @@
                         <button>
                             <i class="fas fa-paperclip"></i>
                         </button>
-                        <input type="text">
+                        <input type="text" placeholder="scrivi qui un messaggio" v-model="newMsg.text" @keyup.enter="addNewMsg" >
                         <button class="send"> 
                             <i class="fas fa-paper-plane"></i>
                         </button>

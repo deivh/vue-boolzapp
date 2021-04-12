@@ -2,6 +2,7 @@ function initVue() {
     new Vue({
         el: '#app', 
         data: {
+            activeIndex: 0,
             contacts : 
             [
                 {
@@ -88,10 +89,31 @@ function initVue() {
                     ],
                 },
             ],
-            'index' : 0
+            newMsg: {
+                        date: 'now',
+                        text: '',
+                        status: 'sent'
+                    },
+
+            defaultReply: {
+                            date: 'now',
+                            text: 'ok',
+                            status: 'received'
+            }
+
 
         },
         methods: {
+            loadMsgClick: function(index){
+                this.activeIndex = index;
+            },
+            botReply: function() {
+                this.contacts[this.activeIndex].messages.push(this.defaultReply);
+            },
+            addNewMsg: function(){
+                this.contacts[this.activeIndex].messages.push(this.newMsg);
+                setTimeout(this.botReply, 1000)
+            }
         }
     })}
 
