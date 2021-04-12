@@ -99,7 +99,8 @@ function initVue() {
                             date: 'now',
                             text: 'ok',
                             status: 'received'
-            }
+            },
+            contactName: ''
 
 
         },
@@ -113,7 +114,7 @@ function initVue() {
             addNewMsg: function(){
                 this.contacts[this.activeIndex].messages.push(this.newMsg);
                 setTimeout(this.botReply, 1000)
-            }
+            },
         }
     })}
 

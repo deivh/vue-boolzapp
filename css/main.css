@@ -120,3 +120,7 @@ div.messageBox img {
     height: auto;
     border-radius: 50%;
 }
+
+.hiddenChat {
+    display: none;
+}

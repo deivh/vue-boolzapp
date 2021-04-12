@@ -40,7 +40,7 @@
                         <label for="search">
                             <i class="fas fa-search"></i>
                         </label>
-                        <input type="text" name="search" placeholder="Cerca un contatto qui"></input>
+                        <input type="text" v-model="contactName" name="search" placeholder="Cerca un contatto qui"></input>
                     </div>
                 </div>
                 <div class="contacts">
@@ -49,8 +49,14 @@
                         @click="loadMsgClick(index)" 
                         class="contact"
                         :class="index == activeIndex ? 'active' : ''">
-                            <img :src="name.avatar" alt="profilepic">
-                            <span>{{ name.name }}</span>
+                            <div v-if="contactName != '' && contactName !== name.name[0]" class="hiddenChat">
+                                <img :src="name.avatar" alt="profilepic">
+                                <span>{{ name.name }}</span>
+                            </div>
+                            <div v-else>
+                                <img :src="name.avatar" alt="profilepic">
+                                <span>{{ name.name }}</span>
+                            </div>
                         </li>
                     </ul>
                 </div>
