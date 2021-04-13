@@ -18,8 +18,11 @@
 <body> 
     <div id="app" class="container">
         <div class="box">
+       
+            <!-- INIZIO LISTA CONTATTI -->
             <div class="contactsList">
                 <div class="profile">
+                    <!-- profilo utente -->
                     <div class="myProfile">
                         <img src="img/profile.jfif" alt="immagine profilo">
                         <div class="icons"> 
@@ -29,6 +32,7 @@
                         </div>
                     
                     </div>
+                    <!-- alert notifiche -->
                     <div class="alerts">
                         <i class="fas fa-bell-slash alertBell"></i>
                         <div>
@@ -37,15 +41,16 @@
                             <i class="fas fa-chevron-right"></i>
                         </div>
                     </div>
+                    <!-- barra di ricerca -->
                     <div class="search">
                         <div>
                             <label for="search">
                                 <i class="fas fa-search"></i>
                             </label>
                             <input  type="text" 
-                                    v-model="contactName" 
+                                    v-model="searchText" 
                                     name="search" 
-                                    placeholder="Cerca un contatto qui">
+                                    placeholder="Cerca o inizia una nuova chat qui">
                             </input>
                         </div>
 
@@ -53,7 +58,7 @@
                 </div>
                 <div class="contacts">
                     <ul>
-                        <li v-for="(name, index) in contacts" 
+                        <li v-for="(name, index) in searchContact()" 
                         @click="loadMsgClick(index)" 
                         class="contact"
                         :class="index == activeIndex ? 'active' : ''">
@@ -72,34 +77,36 @@
                 <div class="messageBoxFull">
                     <div class="messageBox">
                         <div class="profileChat">
-                            <img :src="contacts[activeIndex].avatar">
-                            <h3>{{ contacts[activeIndex].name }}</h3>
+                            <img :src="searchContact()[activeIndex].avatar">
+                            <h3>{{ searchContact()[activeIndex].name }}</h3>
                         </div>
-                        <ul>
-                            <li>
-                                <div class="message" v-for="msg in contacts[activeIndex].messages" 
-                                :key="msg.text" >
-                                    <p :class="msg.status" >
-                                        {{ msg.text }}
-                                        <i @click="dropdownShow" class="fas fa-chevron-down"></i>
-                                        <span>{{ msg.date }}</span>
-                                    </p>
-                                    <div class="dropdown" 
-                                        v-if="show == true" 
-                                        :class="show"
-                                        v-else :class="hidden"
-                                        > 
-                                        
-                                        <ul>
-                                            <li>
-                                                <h4>Cancella Messaggio</h4>
-                                                <h4>Visualizza statistiche</h4>
-                                            </li>
-                                        </ul>
+                        <div class="messages">
+                            <ul>
+                                <li>
+                                    <div class="message" v-for="msg in searchContact()[activeIndex].messages" 
+                                    :key="msg.text" >
+                                        <p :class="msg.status" >
+                                            {{ msg.text }}
+                                            <i @click="dropdownShow" class="fas fa-chevron-down"></i>
+                                            <span>{{ msg.date }}</span>
+                                        </p>
+                                        <div class="dropdown" 
+                                            v-if="show == true" 
+                                            :class="show"
+                                            v-else :class="hidden"
+                                            > 
+                                            
+                                            <ul>
+                                                <li>
+                                                    <h4>Cancella Messaggio</h4>
+                                                    <h4>Visualizza statistiche</h4>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     
                     <div class="sendMsg">                        

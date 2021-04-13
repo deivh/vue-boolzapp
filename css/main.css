@@ -13,7 +13,7 @@ div.box {
 
 div.contactsList {
     width: 35%;
-    height: 100%;
+    max-height: 70vh;
     background-color: rgb(245, 241, 237);
     display: flex;
     flex-direction: column;
@@ -100,8 +100,9 @@ div.contactsList div.search input {
 }
 div.activeChat {
     width: 65%;
-    min-height: 100%;
-    background-image: url("../img/default.jfif");
+    max-height: 70vh;
+    background: url("../img/default.jfif");
+    object-fit: cover;
     opacity: 50%;
 }
 div.box div.contacts ul {
@@ -157,11 +158,15 @@ div.activeChat div.noActiveChat img {
     max-width: 150px;
     height: auto;
 }
+div.activeChat {
+    position: relative;
+}
 
 .hidden {
     visibility: hidden;
 }
-div.activeChat div.messageBox div{
+
+div.activeChat div.messageBox div.message{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -169,9 +174,30 @@ div.activeChat div.messageBox div{
 div.activeChat div.messageBoxFull{
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     justify-content: space-between;
-    height: 100%;
+    height: 70vh;
+    overflow: auto;
 }
+
+
+div.activeChat div.profileChat {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(237,237,237) ;
+    color: black;
+}
+div.activeChat div.profileChat img {
+    margin: 10px;
+    width: 55px;
+    height: 55px;
+}
+div.activeChat div.profileChat h3 {
+    align-self: center;
+    font-weight: 700;
+}
+
+
 div.activeChat div.messageBox p {
     margin: 5px 2px;
 }

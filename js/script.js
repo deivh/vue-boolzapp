@@ -7,7 +7,7 @@ function initVue() {
             [
                 {
                     name: 'Michele',
-                    avatar: 'img/avatar1.jpg',
+                    avatar: 'img/avatar1.jfif',
                     visible: true,
                     messages: [
                         {
@@ -29,7 +29,7 @@ function initVue() {
                 },
                 {
                     name: 'Fabio',
-                    avatar: 'img/avatar2.jpg',
+                    avatar: 'img/avatar2.jfif',
                     visible: true,
                     messages: [
                         {
@@ -51,7 +51,7 @@ function initVue() {
                 },
                 {
                     name: 'Samuele',
-                    avatar: 'img/avatar3.jpg',
+                    avatar: 'img/avatar3.jfif',
                     visible: true,
                     messages: [
                         {
@@ -73,7 +73,7 @@ function initVue() {
                 },
                 {
                     name: 'Luisa',
-                    avatar: 'img/avatar4.jpg',
+                    avatar: 'img/avatar4.jfif',
                     visible: true,
                     messages: [
                         {
@@ -139,7 +139,9 @@ function initVue() {
             searchContact: function() {
                 const resContacts = [];
                 for(let i=0;i<this.contacts.length;i++) {
+                    
                     const contact = this.contacts[i];
+                    console.log(contact);
                     const name = contact['name'];
                     if (name.toLowerCase()
                         .includes(this.searchText.toLowerCase())) {
@@ -147,6 +149,9 @@ function initVue() {
                     }
                 }
                 return resContacts;
+            },
+            deleteMsg: function() {
+                
             }
         }
     })}
