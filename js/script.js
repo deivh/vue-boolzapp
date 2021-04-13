@@ -100,9 +100,16 @@ function initVue() {
                             text: 'ok',
                             status: 'received'
             },
-            contactName: ''
+            contactName: '',
+            show: false,
+            searchText: '',
 
 
+
+        },
+        updated() { 
+            var container = this.$el.querySelector("#activeChat");
+            container.scrollTop = container.scrollHeight;
         },
         methods: {
             loadMsgClick: function(index){
@@ -115,6 +122,32 @@ function initVue() {
                 this.contacts[this.activeIndex].messages.push(this.newMsg);
                 setTimeout(this.botReply, 1000)
             },
+            lastMessage: function(contact) {
+                const indexThis = contact.messages.length - 1;
+                const lastDate = contact.messages[indexThis].date; 
+                const lastMsg = contact.messages[indexThis].text + '' + lastDate;
+                return lastMsg;
+            },
+            dropdownShow: function(){
+                if (this.show== false) {
+                    this.show = true;
+                } 
+                else {
+                    this.show = false;
+                } 
+            },
+            searchContact: function() {
+                const resContacts = [];
+                for(let i=0;i<this.contacts.length;i++) {
+                    const contact = this.contacts[i];
+                    const name = contact['name'];
+                    if (name.toLowerCase()
+                        .includes(this.searchText.toLowerCase())) {
+                        resContacts.push(contact);
+                    }
+                }
+                return resContacts;
+            }
         }
     })}
 

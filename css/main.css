@@ -34,8 +34,50 @@ div.contactsList div.profile {
 div.contactsList div.profile div.myProfile {
     display: flex;
     justify-content: space-between;
+    background-color: rgb(237,237,237);
+    align-items: center;
+}
+div.contactsList div.profile div.myProfile i {
+    font-size: 18px;
+    margin: 3px;
+}
+div.contactsList div.profile div.myProfile i:hover {
+    text-shadow: 1px 1px grey;
+}
+div.contactsList div.profile div.myProfile img {
+    width: 65px;
+    height: 65px;
+    margin: 5px;
 }
 
+div.contactsList div.profile div.alerts {
+    background-color: rgb(157,225,254);
+    display: flex;
+}
+
+div.contactsList div.profile div.alerts i.alertBell{
+    background-color: white;
+    color: rgb(157,225,254);
+    padding: 10px 10px 10px 10px;
+    margin: 10px;
+    border-radius: 50%;
+    font-size: 30px;
+}
+
+div.contactsList div.profile div.alerts div h2 {
+    font-size: 15px;
+}
+div.contactsList div.profile div.alerts div a{
+    font-size: 13px;
+}
+
+div.contactsList div.profile div.alerts div a:hover {
+    text-decoration: underline;
+}
+
+div.contactsList div.profile div.alerts div {
+    align-self: center;
+}
 div.contactsList div.profile div.icons {
     margin-right: 20px;
     font-size: 20px;
@@ -43,11 +85,22 @@ div.contactsList div.profile div.icons {
 
 div.contactsList div.search {
     display: flex;
+    padding: 15px;
+    background-color: rgb(237,237,237);
 }
 
+div.contactsList div.search div {
+    padding: 15px;
+    background-color: white;
+    width: 100%;
+    border-radius: 25px;
+}
+div.contactsList div.search input {
+    border: 0;
+}
 div.activeChat {
     width: 65%;
-    height: 100%;
+    min-height: 100%;
     background-image: url("../img/default.jfif");
     opacity: 50%;
 }
@@ -58,13 +111,37 @@ div.box div.contacts ul {
 div.box div.contacts ul li {
     padding: 10px 20px;
     font-size: 20px;
-    background-color: whitesmoke;
+    background-color: white;
     border-bottom: 1px solid rgba(211, 211, 211, 0.822);
 }
 div.box div.contacts ul li:hover {
     background-color: lightgrey;
 }
 
+div.box div.contacts ul li div img {
+    width: 55px;
+    height: 55px;
+}
+
+div.box div.contacts ul li div {
+    display: flex;
+    justify-content: flex-start;
+} 
+
+div.box div.contacts ul li div div {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0 0 10px;
+}
+
+div.box div.contacts ul li div div span {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+div.box div.contacts ul li div div p {
+    font-size: 13px;
+}
 div.activeChat div.noActiveChat {
     display: flex;
     flex-direction: column;
@@ -110,10 +187,36 @@ div.activeChat div.messageBox .received {
     border-radius: 10px;
     padding: 5px;
 }
+
+
 div.activeChat input {
     width: 80%;
     border-radius: 5px;
     align-self: center;
+}
+
+div.activeChat div.sendMsg {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(237,237,237);
+}
+
+div.activeChat div.sendMsg i {
+    margin: 0 5px;
+    font-size: 30px;
+    color: grey;
+}
+
+div.activeChat div.sendMsg i:hover {
+    text-shadow: 1px 1px black;
+}
+div.activeChat div.sendMsg input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 15px;
+
 }
 div.messageBox img {
     width: 30px;
@@ -123,4 +226,19 @@ div.messageBox img {
 
 .hiddenChat {
     display: none;
+}
+
+.show {
+    display: block;
+}
+div.activeChat div.messageBox ul li div.message {
+    position: relative;
+}
+
+div.dropdown {
+    position: absolute;
+    width: 120px;
+    height: 150px;
+    background-color: white;
+    color: black;
 }

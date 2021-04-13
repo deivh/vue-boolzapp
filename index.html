@@ -30,17 +30,25 @@
                     
                     </div>
                     <div class="alerts">
-                        <i class="fas fa-bell-slash"></i>
+                        <i class="fas fa-bell-slash alertBell"></i>
                         <div>
                             <h2> Ricevi le notifiche dei nuovi messaggi</h2>
-                            <h3>Disattiva le notifiche</h3>
+                            <a>Disattiva le notifiche</a>
+                            <i class="fas fa-chevron-right"></i>
                         </div>
                     </div>
                     <div class="search">
-                        <label for="search">
-                            <i class="fas fa-search"></i>
-                        </label>
-                        <input type="text" v-model="contactName" name="search" placeholder="Cerca un contatto qui"></input>
+                        <div>
+                            <label for="search">
+                                <i class="fas fa-search"></i>
+                            </label>
+                            <input  type="text" 
+                                    v-model="contactName" 
+                                    name="search" 
+                                    placeholder="Cerca un contatto qui">
+                            </input>
+                        </div>
+
                     </div>
                 </div>
                 <div class="contacts">
@@ -49,47 +57,59 @@
                         @click="loadMsgClick(index)" 
                         class="contact"
                         :class="index == activeIndex ? 'active' : ''">
-                            <div v-if="contactName != '' && contactName !== name.name[0]" class="hiddenChat">
+                            <div>
                                 <img :src="name.avatar" alt="profilepic">
-                                <span>{{ name.name }}</span>
-                            </div>
-                            <div v-else>
-                                <img :src="name.avatar" alt="profilepic">
-                                <span>{{ name.name }}</span>
+                                <div>
+                                    <span>{{ name.name }}</span>
+                                    <p class="lastMessage"> {{ lastMessage(name)}}</p>
+                                </div>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="activeChat">
+            <div id="activeChat"class="activeChat">
                 <div class="messageBoxFull">
                     <div class="messageBox">
-                        <div class="header-right-logo">
+                        <div class="profileChat">
                             <img :src="contacts[activeIndex].avatar">
                             <h3>{{ contacts[activeIndex].name }}</h3>
                         </div>
                         <ul>
                             <li>
-                                <div v-for="msg in contacts[activeIndex].messages" 
+                                <div class="message" v-for="msg in contacts[activeIndex].messages" 
                                 :key="msg.text" >
-                                    <p v-if="msg.status=='sent'" class="sent">{{ msg.text }}</p>
-                                    <p v-else class="received">{{ msg.text }} </p>
+                                    <p :class="msg.status" >
+                                        {{ msg.text }}
+                                        <i @click="dropdownShow" class="fas fa-chevron-down"></i>
+                                        <span>{{ msg.date }}</span>
+                                    </p>
+                                    <div class="dropdown" 
+                                        v-if="show == true" 
+                                        :class="show"
+                                        v-else :class="hidden"
+                                        > 
+                                        
+                                        <ul>
+                                            <li>
+                                                <h4>Cancella Messaggio</h4>
+                                                <h4>Visualizza statistiche</h4>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </li>
                         </ul>
                     </div>
                     
-                    <div class="sendMsg">
-                        <button>
-                            <i class="far fa-smile-beam"></i>
-                        </button>
-                        <button>
-                            <i class="fas fa-paperclip"></i>
-                        </button>
-                        <input type="text" placeholder="scrivi qui un messaggio" v-model="newMsg.text" @keyup.enter="addNewMsg" >
-                        <button class="send"> 
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
+                    <div class="sendMsg">                        
+                        <i class="far fa-smile-beam"></i>
+                        <i class="fas fa-paperclip"></i>
+                        <input  v-model="newMsg.text"
+                                type="text" 
+                                placeholder="scrivi qui un messaggio" 
+                                @keyup.enter="addNewMsg" > 
+                        <i class="fas fa-paper-plane"></i>
                     </div>
                 </div>
                 <div class="noActiveChat hidden">
