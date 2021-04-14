@@ -6,52 +6,81 @@ function initVue() {
             contacts : 
             [
                 {
-                    name: 'Michele',
+                    name: 'Locke',
                     avatar: 'img/avatar1.jfif',
                     visible: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
-                            text: 'Hai portato a spasso il cane?',
+                            text: 'Hey, hai per caso visto Celes?',
                             status: 'sent'
                         },
                         {
                             date: '10/01/2020 15:50:00',
-                            text: 'Ricordati di dargli da mangiare',
+                            text: 'N-no è da un bel pezzo che non la vedo ',
                             status: 'sent'
                         },
                         {
                             date: '10/01/2020 16:15:22',
-                            text: 'Tutto fatto!',
+                            text: 'Strano...!',
+                            status: 'received'
+                        }
+                        ,
+                        {
+                            date: '10/01/2020 16:16:55',
+                            text: 'Se la vedi o la senti avvisami!',
+                            status: 'received'
+                        }
+                        ,
+                        {
+                            date: '10/01/2020 16:21:12',
+                            text: 'Certo',
+                            status: 'sent'
+                        }
+                        ,
+                        {
+                            date: '10/01/2020 16:25:54',
+                            text: 'Credo dovresti chiedere a Terra, potrebbe saperlo',
+                            status: 'sent'
+                        }
+                        ,
+                        {
+                            date: '10/01/2020 16:32:01',
+                            text: 'Ci proverò!',
                             status: 'received'
                         }
                     ],
                 },
                 {
-                    name: 'Fabio',
+                    name: 'Rinoa',
                     avatar: 'img/avatar2.jfif',
                     visible: true,
                     messages: [
                         {
                             date: '20/03/2020 16:30:00',
-                            text: 'Ciao come stai?',
+                            text: 'Ciao R-Rinoa, mi ha detto Squall di dirti che stasera ti aspetta fuori la mensa alle 18:30',
                             status: 'sent'
                         },
                         {
                             date: '20/03/2020 16:30:55',
-                            text: 'Bene grazie! Stasera ci vediamo?',
+                            text: 'Grazie mille! Vieni anche tu con noi?',
                             status: 'received'
                         },
                         {
                             date: '20/03/2020 16:35:00',
-                            text: 'Mi piacerebbe ma devo andare a fare la spesa.',
+                            text: 'Mi piacerebbe ma..',
                             status: 'sent'
-                        }
+                        },
+                        {
+                            date: '20/03/2020 16:37:15',
+                            text: 'Dai vieni! Sarà uno spettacolo divertente e tanto i biglietti li abbiamo!',
+                            status: 'received'
+                        },
                     ],
                 },
                 {
-                    name: 'Samuele',
-                    avatar: 'img/avatar3.jfif',
+                    name: 'Gidan',
+                    avatar: 'img/avatar3.jpg',
                     visible: true,
                     messages: [
                         {
@@ -61,30 +90,40 @@ function initVue() {
                         },
                         {
                             date: '28/03/2020 10:20:10',
-                            text: 'Sicuro di non aver sbagliato chat?',
+                            text: 'Ma chi è questa Marianna di cui parli? Gidan hai bevuto di nuovo?',
                             status: 'sent'
                         },
                         {
                             date: '28/03/2020 16:15:22',
                             text: 'Ah scusa!',
                             status: 'received'
+                        },
+                        {
+                            date: '28/03/2020 16:15:22',
+                            text: '...',
+                            status: 'sent'
                         }
                     ],
                 },
                 {
-                    name: 'Luisa',
+                    name: 'Yuffie',
                     avatar: 'img/avatar4.jfif',
                     visible: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
                             text: 'Lo sai che ha aperto una nuova pizzeria?',
-                            status: 'sent'
+                            status: 'received'
                         },
                         {
                             date: '10/01/2020 15:50:00',
-                            text: 'Si, ma preferirei andare al cinema',
-                            status: 'received'
+                            text: 'Si, ma preferirei riavere le mie Materia indietro, Yuffie.',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 19:40:20',
+                            text: 'Lo prendo per un no',
+                            status: 'sent'
                         }
                     ],
                 },
@@ -103,7 +142,7 @@ function initVue() {
             contactName: '',
             show: false,
             searchText: '',
-
+            deleteMsg: 'false'
 
 
         },
@@ -150,8 +189,16 @@ function initVue() {
                 }
                 return resContacts;
             },
-            deleteMsg: function() {
+            deleteCurrentMsg: function(index) {
+                const contact = this.contacts[this.activeIndex];
+                console.log(contact)
                 
+               contact.messages.splice(index,1)
+            },
+
+            deleteCurrentMsgAlt: function(index){
+                const contact = this.contacts[this.activeIndex];
+                contact.messages[index].text = 'messaggio eliminato'
             }
         }
     })}
@@ -161,4 +208,4 @@ function initVue() {
     
     
     }
-    $(init);
+    document.addEventListener('DOMContentLoaded', init);

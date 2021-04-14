@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+/* regole generali */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
 div.box {
@@ -11,6 +16,22 @@ div.box {
     display: flex;
 }
 
+/* regole ricorrenti di pagina */
+.hiddenChat {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.blue {
+    color: blue;
+}
+
+
+
+/* regole contact list/menu a sinistra */
 div.contactsList {
     width: 35%;
     max-height: 70vh;
@@ -30,7 +51,7 @@ div.contactsList div.profile {
     flex-direction: column;
     justify-content: space-between;
 }
-
+/* regole my profile */
 div.contactsList div.profile div.myProfile {
     display: flex;
     justify-content: space-between;
@@ -49,7 +70,7 @@ div.contactsList div.profile div.myProfile img {
     height: 65px;
     margin: 5px;
 }
-
+/* regole alert block */
 div.contactsList div.profile div.alerts {
     background-color: rgb(157,225,254);
     display: flex;
@@ -78,11 +99,12 @@ div.contactsList div.profile div.alerts div a:hover {
 div.contactsList div.profile div.alerts div {
     align-self: center;
 }
+
 div.contactsList div.profile div.icons {
     margin-right: 20px;
     font-size: 20px;
 }
-
+/* regole search bar */
 div.contactsList div.search {
     display: flex;
     padding: 15px;
@@ -98,13 +120,9 @@ div.contactsList div.search div {
 div.contactsList div.search input {
     border: 0;
 }
-div.activeChat {
-    width: 65%;
-    max-height: 70vh;
-    background: url("../img/default.jfif");
-    object-fit: cover;
-    opacity: 50%;
-}
+
+/* regole generiche blocco contacts */
+
 div.box div.contacts ul {
     list-style: none;
 }
@@ -143,7 +161,8 @@ div.box div.contacts ul li div div span {
 div.box div.contacts ul li div div p {
     font-size: 13px;
 }
-div.activeChat div.noActiveChat {
+
+.noActiveChat {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -152,7 +171,15 @@ div.activeChat div.noActiveChat {
     
 }
 
+/* regole chat a destra/ right chat rules */
+div.activeChat {
+    width: 65%;
+    min-height: 75vh;
+    background: url("../img/default.jfif");
+    object-fit: cover;
+} 
 
+/* regole idle static noChat */
 div.activeChat div.noActiveChat img {
     margin-top: 150px;
     max-width: 150px;
@@ -162,28 +189,33 @@ div.activeChat {
     position: relative;
 }
 
-.hidden {
-    visibility: hidden;
-}
-
+/*  regole activeChat & messaggi */
 div.activeChat div.messageBox div.message{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+
+div.activeChat div.messageBox {
+    margin-top: 75px;
+}
 div.activeChat div.messageBoxFull{
+
+    margin-bottom: 60px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     justify-content: space-between;
     height: 70vh;
     overflow: auto;
 }
 
-
+/* regole profilo chat attiva */
 div.activeChat div.profileChat {
+    position: absolute;
+    top: 0;
     display: flex;
     flex-direction: row;
+    width: 100%;
     background-color: rgb(237,237,237) ;
     color: black;
 }
@@ -197,7 +229,7 @@ div.activeChat div.profileChat h3 {
     font-weight: 700;
 }
 
-
+/* regole box messaggi chat attiva */
 div.activeChat div.messageBox p {
     margin: 5px 2px;
 }
@@ -214,7 +246,7 @@ div.activeChat div.messageBox .received {
     padding: 5px;
 }
 
-
+/* regole input add new msg */
 div.activeChat input {
     width: 80%;
     border-radius: 5px;
@@ -222,6 +254,8 @@ div.activeChat input {
 }
 
 div.activeChat div.sendMsg {
+    position: absolute;
+    bottom: 0px;
     display: flex;
     align-items: center;
     width: 100%;
@@ -250,13 +284,7 @@ div.messageBox img {
     border-radius: 50%;
 }
 
-.hiddenChat {
-    display: none;
-}
 
-.show {
-    display: block;
-}
 div.activeChat div.messageBox ul li div.message {
     position: relative;
 }
@@ -267,4 +295,9 @@ div.dropdown {
     height: 150px;
     background-color: white;
     color: black;
+}
+
+
+div.noActiveChat.hidden {
+    display: none 
 }

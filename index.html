@@ -17,6 +17,7 @@
 </head>
 <body> 
     <div id="app" class="container">
+        <div class="greenBar"></div>
         <div class="box">
        
             <!-- INIZIO LISTA CONTATTI -->
@@ -80,35 +81,38 @@
                             <img :src="searchContact()[activeIndex].avatar">
                             <h3>{{ searchContact()[activeIndex].name }}</h3>
                         </div>
+                        <!-- msgs load -->
                         <div class="messages">
                             <ul>
                                 <li>
-                                    <div class="message" v-for="msg in searchContact()[activeIndex].messages" 
+                                    <div class="message"  v-for="msg in searchContact()[activeIndex].messages" 
                                     :key="msg.text" >
                                         <p :class="msg.status" >
                                             {{ msg.text }}
-                                            <i @click="dropdownShow" class="fas fa-chevron-down"></i>
+                                            <i v-on:click="deleteCurrentMsg(activeIndex)" class="far fa-trash-alt"></i>
+                                            <i v-on:click="deleteCurrentMsgAlt(activeIndex)" class="blue far fa-trash-alt"></i>
+                                            <br>
                                             <span>{{ msg.date }}</span>
                                         </p>
-                                        <div class="dropdown" 
+                                        <!-- <p v-else>messaggio eliminato</p> -->
+                                        <!-- <div class="dropdown" 
                                             v-if="show == true" 
                                             :class="show"
-                                            v-else :class="hidden"
-                                            > 
-                                            
-                                            <ul>
+                                            v-else :class="hidden"> 
+                                            delete msg (not working) -->
+                                            <!-- <ul>
                                                 <li>
-                                                    <h4>Cancella Messaggio</h4>
-                                                    <h4>Visualizza statistiche</h4>
+                                                    <a @click="deleteMsg(activeIndex)">Cancella Messaggio</a>
+                                                    <a>Visualizza statistiche</a>
                                                 </li>
                                             </ul>
-                                        </div>
-                                    </div>
+                                        </div> -->
+                                    </div> 
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    
+                    <!-- add new msg -->
                     <div class="sendMsg">                        
                         <i class="far fa-smile-beam"></i>
                         <i class="fas fa-paperclip"></i>
@@ -119,7 +123,9 @@
                         <i class="fas fa-paper-plane"></i>
                     </div>
                 </div>
-                <div class="noActiveChat hidden">
+
+                <!-- idle static chat -->
+                <div class="hidden noActiveChat ">
                     <img src="img/logo.png" alt="whatsapp promo">
                     <h2>Mantieni il telefono connesso</h2>
                     <p>BoolzApp si collega al tuo telefono per sincronizzare i messaggi. Per Ridurre l'utilizzo dei dati, collega il telefono al Wi-Fi</p>
