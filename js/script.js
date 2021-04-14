@@ -13,7 +13,7 @@ function initVue() {
                         {
                             date: '10/01/2020 15:30:55',
                             text: 'Hey, hai per caso visto Celes?',
-                            status: 'sent'
+                            status: 'received'
                         },
                         {
                             date: '10/01/2020 15:50:00',
